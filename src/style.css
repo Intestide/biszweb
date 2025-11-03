@@ -72,23 +72,33 @@ body {
 } 
 /*page2 */
 .band{
+  position: relative;
+  top: 50vh;
+  transform: translateY(-50%);
   font-size: 20vw;
-  letter-spacing: -1vw;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  letter-spacing: -0.8vw;
+  font-weight: 600;
+  font-family: Arial, sans-serif;
   width: auto;
   white-space: nowrap;
   z-index: 10;
   
 }
 .p2Bg{
-  height: 100vh;
-  width: 100%;
+  /* background-image: linear-gradient(to right, #E21143, #FFB03A); */
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  transform: translateY(-50%);
+  -webkit-background-clip: text;
+  color: transparent; 
+  background-clip: text;
   text-align: center;
   opacity: 0.7;
   z-index: -10;
-  font-size: 35vw;
+  font-size: 30vw;
   font-family:'Times New Roman', Times, serif;
-  letter-spacing: -3vw;
+  /* letter-spacing: -3vw; */
 }
 
 /* Loading animation */

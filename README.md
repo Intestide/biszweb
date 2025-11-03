@@ -15,4 +15,4 @@ After installation, start the server with:
 ```bash
 npm run dev
 ```
-The page would then be available through port [http://localhost:8080](http://localhost:8080). You could then open it and view any page to check functionality.
+The page would then be available through port [http://localhost:5173](http://localhost:5173). You could then open it and view any page to check functionality.

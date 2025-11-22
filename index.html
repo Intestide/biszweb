@@ -1,58 +1,70 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <!-- <link rel="icon" type="image/svg+xml" href="/vite.svg" /> -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script type="module" src="/src/main.js"></script>
-    <title>biszweb.club</title>
-  </head>
-  <body>
-    <div id="app">
-      <div class="loader"> 
-        <div class="spinner-box">
-          <div class="configure-border-1">  
-            <div class="configure-core"></div>
-          </div>  
-          <div class="configure-border-2">
-            <div class="configure-core"></div>
-          </div> 
-        </div>
-        <div style="font-family: monospace; font-weight: 200; font-size: 1.5rem;">loading...</div> 
-      </div>
-      <div class="main">
-        <div class="page" style="display: flex;flex-direction: column;">
-          <div class="extender"></div>
-          <div class="waves">
-            <svg style="transform: rotateY(180deg)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#a2d9ff" fill-opacity="1" d="M0,64L60,80C120,96,240,128,360,144C480,160,600,160,720,186.7C840,213,960,267,1080,277.3C1200,288,1320,256,1380,240L1440,224L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path></svg>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#0099ff" fill-opacity="1" d="M0,160L80,170.7C160,181,320,203,480,181.3C640,160,800,96,960,101.3C1120,107,1280,181,1360,218.7L1440,256L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"></path></svg>
-          </div>
-          <div class="title_wrapper">
-            <div class="title">Basis Shenzhen</div>
-            <div class="subtitle">CLUB SITE</div>
-          </div>
-          <div class="quick_start">
-            <div style="font-family: 'Courier New', Courier, monospace; font-size: 1.5rem;">A website for students to access all kind of information</div>
-            <div style="display: flex; flex-direction: row; gap: 20px; justify-content: center; margin-top: 20px;">
-              <button id="scrollBtn">Read more</button>
-              <button onclick="">Club list</button>
+    <head>
+        <meta charset="UTF-8"/>
+        <link rel="icon" type="image/png" href="/favicon.png"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <script type="module" src="/src/main.js"></script>
+        <title>BISZ Clubs</title>
+    </head>
+    <body>
+        <div id="app">
+            <div class="loader">
+                <div class="spinner-box">
+                    <div class="configure-border-1">
+                        <div class="configure-core"></div>
+                    </div>
+                    <div class="configure-border-2">
+                        <div class="configure-core"></div>
+                    </div>
+                </div>
+                <div style="font-family: monospace; font-weight: 200; font-size: 1.5rem;">loading...</div>
             </div>
-          </div>
+            <div class="main">
+                <div class="page" style="display: flex;flex-direction: column;">
+                    <div class="extender"></div>
+                    <div class="waves">
+                        <svg style="transform: rotateY(180deg)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                            <path fill="#a2d9ff" fill-opacity="1"
+                                d="M0,64L60,80C120,96,240,128,360,144C480,160,600,160,720,186.7C840,213,960,267,1080,277.3C1200,288,1320,256,1380,240L1440,224L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z">
+                            </path>
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                            <path fill="#0099ff" fill-opacity="1"
+                                d="M0,160L80,170.7C160,181,320,203,480,181.3C640,160,800,96,960,101.3C1120,107,1280,181,1360,218.7L1440,256L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z">
+                            </path>
+                        </svg>
+                    </div>
+                    <div class="title_wrapper">
+                        <div class="title">Basis Shenzhen</div>
+                        <div class="subtitle">CLUB SITE</div>
+                    </div>
+                    <div class="quick_start">
+                        <div style="font-family: 'Courier New', Courier, monospace; font-size: 1.5rem;">A website for
+                            students to access all kind of information</div>
+                        <div
+                            style="display: flex; flex-direction: row; gap: 20px; justify-content: center; margin-top: 20px;">
+                            <button id="scrollBtn">Read more</button>
+                            <button onclick="">Club list</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="page p2">
+                    <div class="band">Clubs are opportnities for students to experince Academic and Casual fields along with
+                        peers and instructors, developing skill and personality.</div>
+                    <div class="p2Bg">CLUBS</div>
+                </div>
+                <div class="page">
+                    Images
+                </div>
+                <div class="page">
+                    FAQ
+                </div>
+                <div class="footer">
+                    Footer
+                </div>
+            </div>
+            <div class="modal"></div>
         </div>
-        <div class="page p2">
-          <div class="band">Clubs are opportnities for students to experince Academic and Casual fields along with peers and instructors, developing skill and personality.</div>
-          <div class="p2Bg">CLUBS</div>
-        </div>
-        <div class="page">
-          Images
-        </div>
-        <div class="page">
-          FAQ
-        </div>
-        <div class="footer">
-          Footer
-        </div>
-      </div>
-      <div class="modal"></div>
-    </div>
-  </body>/html>
+    </body>
+</html>

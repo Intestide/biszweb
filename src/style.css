@@ -1,5 +1,5 @@
 :root{
-    font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+    font-family: "Noto Sans SC", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
     line-height: 1.5;
     font-weight: 400;
     color-scheme: light dark;
@@ -9,17 +9,31 @@
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    --primary: #3255A4;  
+    --secondary: #32A5E4; 
+}
+@font-face{
+    font-family: "Noto Sans SC";
+    src: url("https://fonts.loli.net/css2?family=Noto+Sans+SC:wght@100..900") format("truetype-variations"), url("/fonts/NotoSansSC-VariableFont_wght.ttf") format("truetype-variations");
+    font-display: swap;
+    font-weight: 1 1000;
+}
+@font-face{
+    font-family: "EB Garamond";
+    src: url("https://fonts.loli.net/css2?family=EB+Garamond:wdth,wght@100..900,200..900") format("truetype-variations"), url("/fonts/EBGaramond-VariableFont_wght.ttf") format("truetype-variations");
+    font-display: swap;
+    font-weight: 1 1000;
 }
 *{
     box-sizing: border-box;
 }
 a{
     font-weight: 500;
-    color: #646cff;
+    color: var(--primary);
     text-decoration: inherit;
 }
 a:hover{
-    color: #535bf2;
+    color: var(--secondary)
 }
 body{
     margin: 0;
@@ -72,7 +86,7 @@ body{
     font-size: 20vw;
     letter-spacing: -0.8vw;
     font-weight: 600;
-    font-family: Arial, sans-serif;
+    font-family: "Noto Sans SC", sans-serif;
     width: auto;
     white-space: nowrap;
     z-index: 10;
@@ -91,7 +105,7 @@ body{
     opacity: 0.7;
     z-index: -10;
     font-size: 30vw;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: "EB Garamond", serif;
     /* letter-spacing: -3vw; */
 }
 /* Loading animation */
@@ -189,6 +203,7 @@ button{
     background-color: #1a1a1a;
     cursor: pointer;
     transition: border-color 0.25s;
+    color: var(--primary);
 }
 button:hover{
     border-color: #646cff;

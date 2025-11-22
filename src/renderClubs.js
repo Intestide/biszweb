@@ -4,7 +4,7 @@ import {listClubs} from "./listClubs.js";
 *@param {string} pageName - "academic", "arts", "cs", "sports" 
 *@param {string} containerSelector - selector for main container, default ".main-section"
  */
-export async function renderClubs(pageName="", containerSelector=".main-section"){
+export async function renderClubs(pageName="", containerSelector=".club-section"){
     let clubData=await listClubs();
     let mainSection=document.querySelector(containerSelector);
     if (!mainSection){

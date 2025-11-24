@@ -1,0 +1,40 @@
+*{
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.club-card{
+  width: 40rem;
+  background-color: #413f3f;
+  padding: 2.5rem;
+  border-radius: 1rem;
+}
+.club-header{
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+}
+.club-title{
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+.club-tags{
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  
+  text-align: center;
+}
+.club-tag{
+  background-color: #625f5f;
+  padding: 0.3rem 0.6rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+}
+.club-list{
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+}

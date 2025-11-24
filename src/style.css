@@ -85,7 +85,7 @@ body {
   
 }
 .p2Bg{
-  /* background-image: linear-gradient(to right, #E21143, #FFB03A); */
+  background-image: linear-gradient(to right, hsla(0, 100%, 50%, 1.00), hsla(180, 100%, 50%, 1.00));
   display: inline-block;
   vertical-align: middle;
   position: relative;

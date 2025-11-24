@@ -27,7 +27,7 @@ const animate = () => {
     gsap.from(".subtitle",{duration:1,x:"-60%",opacity:0,ease:"bounce",delay:1});
     document.getElementById("scrollBtn").addEventListener("click",scrollDown);
     let angle = Math.atan(window.innerHeight/window.innerWidth);
-    console.log(angle*(180/Math.PI));
+    // console.log(angle*(180/Math.PI));
     gsap.set(".band",{rotate: angle*(180/Math.PI)});
     let bandWidth = document.querySelector(".band").scrollWidth;
     const p2tl = gsap.timeline({

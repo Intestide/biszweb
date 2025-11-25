@@ -14,15 +14,13 @@
 }
 @font-face{
     font-family: "Noto Sans SC";
-    src: url("/fonts/NotoSansSC-VariableFont_wght.ttf") format("truetype-variations");
+    src: url("/fonts/NotoSansSC-VariableFont_wght.ttf") format("truetype");
     font-display: swap;
-    font-weight: 1 900;
 }
 @font-face{
     font-family: "EB Garamond";
-    src: url("/fonts/EBGaramond-VariableFont_wght.ttf") format("truetype-variations");
+    src: url("/fonts/EBGaramond-VariableFont_wght.ttf") format("truetype");
     font-display: swap;
-    font-weight: 1 900;
 }
 *{
     box-sizing: border-box;

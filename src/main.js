@@ -2,9 +2,12 @@ import './style.css'
 import 'lenis/dist/lenis.css'
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+
 import Lenis from 'lenis'
 
 gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollToPlugin) 
 
 const lenis = new Lenis();
 lenis.on('scroll', ScrollTrigger.update);
@@ -53,5 +56,5 @@ const animate = () => {
 }
 document.querySelector("#scrollBtn").addEventListener('click', scrollDown);
 function scrollDown(){
-  gsap.scrollTo(window.innerHeight, {duration:4,behavior: 'smooth'});
+  gsap.to(window,{duration:0.2,behavior: 'smooth', scrollTo: window.innerHeight});
 }

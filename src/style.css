@@ -93,20 +93,20 @@ body{
 
 }
 .p2Bg{
-  background-image: linear-gradient(to right, hsla(0, 100%, 50%, 1.00), hsla(180, 100%, 50%, 1.00));
-  display: inline-block;
-  vertical-align: middle;
-  position: relative;
-  transform: translateY(-50%);
-  -webkit-background-clip: text;
-  color: transparent; 
-  background-clip: text;
-  text-align: center;
-  opacity: 0.7;
-  z-index: -10;
-  font-size: 30vw;
-  font-family:'Times New Roman', Times, serif;
-  /* letter-spacing: -3vw; */
+    /* background-image: linear-gradient(to right, #E21143, #FFB03A); */
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    transform: translateY(-50%);
+    -webkit-background-clip: text;
+    color: transparent;
+    background-clip: text;
+    text-align: center;
+    opacity: 0.7;
+    z-index: -10;
+    font-size: 30vw;
+    font-family: "EB Garamond", serif;
+    /* letter-spacing: -3vw; */
 }
 /* Loading animation */
 .loader{

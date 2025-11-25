@@ -14,15 +14,15 @@
 }
 @font-face{
     font-family: "Noto Sans SC";
-    src: url("https://fonts.loli.net/css2?family=Noto+Sans+SC:wght@100..900") format("truetype-variations"), url("/fonts/NotoSansSC-VariableFont_wght.ttf") format("truetype-variations");
+    src: url("/fonts/NotoSansSC-VariableFont_wght.ttf") format("truetype-variations");
     font-display: swap;
-    font-weight: 1 1000;
+    font-weight: 1 900;
 }
 @font-face{
     font-family: "EB Garamond";
-    src: url("https://fonts.loli.net/css2?family=EB+Garamond:wdth,wght@100..900,200..900") format("truetype-variations"), url("/fonts/EBGaramond-VariableFont_wght.ttf") format("truetype-variations");
+    src: url("/fonts/EBGaramond-VariableFont_wght.ttf") format("truetype-variations");
     font-display: swap;
-    font-weight: 1 1000;
+    font-weight: 1 900;
 }
 *{
     box-sizing: border-box;
@@ -93,7 +93,6 @@ body{
 
 }
 .p2Bg{
-<<<<<<< HEAD
   background-image: linear-gradient(to right, hsla(0, 100%, 50%, 1.00), hsla(180, 100%, 50%, 1.00));
   display: inline-block;
   vertical-align: middle;
@@ -108,22 +107,6 @@ body{
   font-size: 30vw;
   font-family:'Times New Roman', Times, serif;
   /* letter-spacing: -3vw; */
-=======
-    /* background-image: linear-gradient(to right, #E21143, #FFB03A); */
-    display: inline-block;
-    vertical-align: middle;
-    position: relative;
-    transform: translateY(-50%);
-    -webkit-background-clip: text;
-    color: transparent;
-    background-clip: text;
-    text-align: center;
-    opacity: 0.7;
-    z-index: -10;
-    font-size: 30vw;
-    font-family: "EB Garamond", serif;
-    /* letter-spacing: -3vw; */
->>>>>>> de2701a69a3659918c65eef37c7d7c68f418b404
 }
 /* Loading animation */
 .loader{

@@ -23,5 +23,5 @@ dist-ssr
 *.sln
 *.sw?
 
-public/img
 clubs.json
+src/assets/img

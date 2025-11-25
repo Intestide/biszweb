@@ -4,14 +4,14 @@ import {listClubs} from "./listClubs.js";
 *@param {string} pageName - "academic", "arts", "cs", "sports" 
 *@param {string} containerSelector - selector for main container, default ".main-section"
  */
-export async function renderClubs(pageName="", containerSelector=".club-section"){
+export async function renderClubs(pageName="", containerSelector=".club-body"){
     let clubData=await listClubs();
     let mainSection=document.querySelector(containerSelector);
     if (!mainSection){
         return console.warn("Container not found:", containerSelector);
     }
     mainSection.innerHTML="";
-    let filteredClubs=clubData.filter(club=>club.clubID.split(".")[0]==pageName);
+    let filteredClubs=(pageName==""||pageName=="all")?clubData:clubData.filter(club=>club.clubID.split(".")[0]==pageName);
     if (filteredClubs.length==0){
         mainSection.innerHTML=`<p style="text-align: center; color: #666; font-size: 1.2rem;">No ${pageName.toUpperCase()} clubs found.</p>`;
         return;
@@ -36,9 +36,9 @@ export async function renderClubs(pageName="", containerSelector=".club-section"
             margin: 1rem 0;
             flex-wrap: wrap;
         `;
-        club.images.forEach(file=>{
+        club.images.forEach(imgObj=>{
             let img=new Image();
-            img.src=`${club.fullImagePath}${file}`;
+            img.src=imgObj.url;
             img.loading="lazy";
             img.alt=`${club.clubName} image`;
             img.style.cssText=`

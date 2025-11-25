@@ -2,37 +2,32 @@ export async function listClubs(jsonPath="/clubs.json"){
     try{
         let response=await fetch(jsonPath);
         if (!response.ok){
-            throw new Error(`HTTP error! Status: ${response.status}`);
+            throw new Error(`HTTP ${response.status}`);
         }
         let clubs=await response.json();
-        let results=await Promise.all(
-            clubs.map(async club=>{
-                let [partOne, partTwo]=club.clubID.split(".");
-                let basePath="img/";
-                let clubPath=`${partOne}/${partTwo}/`;
-                let fullImagePath=`${basePath}${clubPath}`;
-                let images=[];
-                try{
-                    let imgRes=await fetch(`/images.json/${fullImagePath}`);
-                    if (imgRes.ok){
-                        images=await imgRes.json();
-                    }
-                    else{
-                        console.warn(`Image list fetch failed for ${club.clubID}: ${imgRes.status}`);
-                    }
+        const allImages=import.meta.glob("/src/assets/img/**/*.{png,jpg,jpeg,gif,webp}",{eager: true, import: "default"});
+        let results=clubs.map(club =>{
+            let [partOne, partTwo]=club.clubID.split(".");
+            let folder=`${partOne}/${partTwo}/`;
+            let images=[];
+            for (const path in allImages){
+                if (path.includes(`/img/${folder}`)){
+                    images.push({
+                        filename: path.split("/").pop(),
+                        url: allImages[path]
+                    });
                 }
-                catch (err){
-                    console.warn(`No images found for ${club.clubID}:`, err.message);
-                }
-                return{
-                    ...club, basePath, clubPath, fullImagePath, images
-                };
-            })
-        );
+            }
+            return{
+                ...club,
+                folder,
+                images
+            };
+        });
         return results;
     }
-    catch (error){
-        console.error("Error loading clubs.json:", error);
+    catch (err){
+        console.error("Error loading clubs.json:", err);
         return [];
     }
 }

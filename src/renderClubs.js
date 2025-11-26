@@ -13,44 +13,42 @@ export async function renderClubs(pageName="", containerSelector=".club-body"){
     mainSection.innerHTML="";
     let filteredClubs=(pageName==""||pageName=="all")?clubData:clubData.filter(club=>club.clubID.split(".")[0]==pageName);
     if (filteredClubs.length==0){
-        mainSection.innerHTML=`<p style="text-align: center; color: #666; font-size: 1.2rem;">No ${pageName.toUpperCase()} clubs found.</p>`;
+        mainSection.innerHTML=`<p class="no-clubs-message">No ${pageName.toUpperCase()} clubs found.</p>`;
         return;
     }
     filteredClubs.forEach((club, i)=>{
         let div=document.createElement("div");
-        div.className="club-card";
-        div.style.cssText=`
-            background: white;
-            border-radius: 8px;
-            padding: 1.5rem;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        `;
-        div.onmouseenter=()=>div.style.transform="translateY(-5px)";
-        div.onmouseleave=()=>div.style.transform="translateY(0)";
+        div.className="club-card js-club-card";
         let imagesContainer=document.createElement("div");
         imagesContainer.className="club-images";
-        imagesContainer.style.cssText=`
-            display: flex;
-            gap: 0.5rem;
-            margin: 1rem 0;
-            flex-wrap: wrap;
-        `;
         club.images.forEach(imgObj=>{
             let img=new Image();
             img.src=imgObj.url;
             img.loading="lazy";
             img.alt=`${club.clubName} image`;
-            img.style.cssText=`
-                max-width: 100px;
-                max-height: 100px;
-                object-fit: cover;
-                border-radius: 4px;
-            `;
+            img.className="club-image";
             imagesContainer.appendChild(img);
         });
+        let clubCategory=club.clubID.split(".")[0];
+        switch (clubCategory){
+            case "academic":
+                clubCategory="Academic/Intellectual";
+                break;
+            case "arts":
+                clubCategory="Arts/Performance";
+                break;
+            case "cs":
+                clubCategory="Computer Science/Information and Communication Technology/Technology"
+                break;
+            case "sports":
+                clubCategory="Sports/Wellness";
+                break;
+            default:
+                break;
+        }
         div.innerHTML=`
-            <h2 style="margin: 0 0 1rem 0; color: #333;">${club.clubName}</h2>
+            <h2 class="club-card-title">${club.clubName}</h2>
+            <p><strong>Club Category:</strong> ${clubCategory}</p>
             <p><strong>Advisor:</strong> ${club.clubAdvisor}</p>
             <p><strong>Student Leaders:</strong> ${club.clubStudentLeader}</p>
             <p><strong>Grades:</strong> ${club.grades}</p>

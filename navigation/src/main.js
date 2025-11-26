@@ -1,20 +1,25 @@
 import "./style.css"
 import {renderClubs} from "../../src/renderClubs.js";
 import {gsap} from "gsap";
+import {ScrollTrigger} from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 let originalRenderClubs=renderClubs;
 async function renderClubsWithAnimation(filterValue="", containerSelector=".club-body"){
     let clubBody=document.querySelector(containerSelector);
     clubBody.classList.add("loading-clubs");
     let existingCards=clubBody.querySelectorAll(".club-card");
     if (existingCards.length>0){
-        await new Promise((resolve)=>{
+        await new Promise(resolve=>{
             gsap.to(existingCards,{
-                y: 50,
+                scale: .5,
                 opacity: 0,
-                scale: .9,
-                duration: .4,
+                x: 0,
+                y: 0,
+                rotation: -10,
+                duration: .5,
                 stagger: .05,
-                ease: "power2.in",
+                ease: "power3.in",
+                transformOrigin: "50% 50%",
                 onComplete: resolve
             });
         });
@@ -24,19 +29,25 @@ async function renderClubsWithAnimation(filterValue="", containerSelector=".club
     await originalRenderClubs(filterValue, containerSelector);
     let newCards=clubBody.querySelectorAll(".club-card");
     if (newCards.length>0){
-        gsap.set(newCards,{
-            y: 60,
-            opacity: 0,
-            scale: .95
-        });
-        gsap.to(newCards,{
-            y: 0,
-            opacity: 1,
-            scale: 1,
-            duration: .7,
-            stagger: .1,
-            ease: "back.out(1.4)",
-            overwrite: true
+        newCards.forEach(card=>{
+            gsap.set(card,{
+                y: 50,
+                opacity: 0,
+                scale: .95
+            });
+            gsap.to(card,{
+                y: 0,
+                opacity: 1,
+                scale: 1,
+                duration: .8,
+                ease: "power2.out",
+                scrollTrigger:{
+                    trigger: card,
+                    start: "top 85%",
+                    end: "bottom 15%",
+                    toggleActions: "play reverse play reverse", 
+                }
+            });
         });
     }
     let searchInput=document.getElementById("clubs-search-bar");
@@ -79,7 +90,7 @@ function highlightSearchTerms(searchTerm){
         return;
     }
     let clubCards=document.querySelectorAll(".club-card");
-    let searchWords=searchTerm.split(/\s+/).filter(word=>word.length > 0);
+    let searchWords=searchTerm.split(/\s+/).filter(word=>word.length>0);
     clubCards.forEach(card=>{
         if (card.style.display!="none"){
             highlightCardText(card, searchWords);

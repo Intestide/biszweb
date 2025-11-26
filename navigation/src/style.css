@@ -1,6 +1,16 @@
 *{
     box-sizing: border-box;
 }
+@font-face{
+    font-family: "Noto Sans SC";
+    src: url("/fonts/NotoSansSC-VariableFont_wght.ttf") format("truetype");
+    font-display: swap;
+}
+@font-face{
+    font-family: "EB Garamond";
+    src: url("/fonts/EBGaramond-VariableFont_wght.ttf") format("truetype");
+    font-display: swap;
+}
 :root{
     font-family: "Noto Sans SC", system-ui, -apple-system, BlinkMacSystemFont, sans-serif !important;
     line-height: 1.5;
@@ -23,6 +33,7 @@
     color-scheme: light;
     color: var(--text-primary);
     background-color: var(--bg-primary);
+    --text: #000;
 }
 @media (prefers-color-scheme: dark){
     :root{
@@ -37,6 +48,7 @@
         --border-color: #333333;
         --shadow-color: rgba(0, 0, 0, .3);
         --shadow-hover: rgba(0, 0, 0, .4);
+        --text: #FFF;
         color-scheme: dark;
     }
 }
@@ -44,16 +56,6 @@
     :root{
         transition: background-color .3s ease, color .3s ease;
     }
-}
-@font-face{
-    font-family: "Noto Sans SC";
-    src: url("/fonts/NotoSansSC-VariableFont_wght.ttf") format("truetype");
-    font-display: swap;
-}
-@font-face{
-    font-family: "EB Garamond";
-    src: url("/fonts/EBGaramond-VariableFont_wght.ttf") format("truetype");
-    font-display: swap;
 }
 body{
     margin: 0;
@@ -112,6 +114,8 @@ body{
     border-radius: .5rem;
     border: 1px solid var(--border-color);
     transition: all .3s ease;
+    transform-origin: center top;
+    will-change: transform, opacity;
 }
 .js-club-card{
     background-color: var(--bg-secondary);
@@ -146,18 +150,33 @@ body{
     gap: .5rem;
     flex-wrap: wrap;
 }
-.club-type{
+.club-types label{
+    display: inline-flex;
+    align-items: center;
+}
+.club-type-checkbox{
+    display: none;
+}
+.club-type-label{
     background-color: var(--primary);
+    color: #FFF;
     padding: .3rem .8rem;
     border-radius: .25rem;
     font-size: .9rem;
     font-weight: 500;
-    transition: all .3s ease-in-out;
     cursor: pointer;
-    color: #FFFFFF;
+    transition: all .3s ease-in-out;
+    user-select: none;
+    display: inline-block;
 }
-.club-type:hover{
+.club-type-label:focus{
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+.club-type-checkbox:checked + .club-type-label{
     background-color: var(--secondary);
+    color: white;
+    box-shadow: 0 0 0 2px var(--primary) inset;
     transform: scale(1.05);
 }
 .club-body{
@@ -165,6 +184,10 @@ body{
     line-height: 1.6;
     color: var(--text-secondary);
     transition: color .3s ease;
+    position: relative;
+    min-height: 200px;
+    width: 100%;
+    max-width: 60rem;
 }
 .club-images{
     display: flex;
@@ -213,6 +236,69 @@ button:focus, button:focus-visible{
     outline: 2px solid var(--primary);
     outline-offset: 2px;
 }
+.loading-clubs::after{
+    content: "Loading clubs...";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+html{
+    scroll-behavior: smooth;
+}
+strong{
+    color: var(--primary);
+}
+.search-input{
+    width: 100%;
+    padding: .5rem 1rem;
+    font-size: 1rem;
+    line-height: 1.3;
+    color: var(--text-primary);
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: .5rem;
+    box-shadow: 0 1px 3px var(--shadow-color);
+    transition: all .3s ease;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin-top: .5rem;
+}
+.search-input:hover{
+    border-color: var(--text-secondary);
+    box-shadow: 0 1px 5px var(--shadow-hover);
+}
+.search-input:focus{
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px var(--secondary);
+    background-color: var(--bg-primary);
+}
+.search-input::placeholder{
+    color: var(--text-muted);
+    opacity: 1;
+}
+.filters{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+.search-highlight{
+    background-color: #FFEB3B;
+    padding: 2px 1px;
+    border-radius: 2px;
+    font-weight: bold;
+    color: var(--text);
+    box-shadow: 0 1px 2px var(--shadow-color);
+}
+.search-highlight:hover{
+    background-color: #FFD700;
+    transform: scale(1.02);
+    transition: all .2s ease;
+}
 @media (prefers-contrast: high){
     :root{
         --border-color: #000000;
@@ -253,5 +339,9 @@ button:focus, button:focus-visible{
     }
     .club-title{
         font-size: 1.25rem;
+    }
+    .search-input{
+        padding: .6rem 1rem;
+        font-size: .95rem;
     }
 }

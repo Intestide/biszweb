@@ -9,16 +9,32 @@
     <body>
         <div class="header">
             <div>BASIS Clubs</div>
-            <div>explore all the BASIS clubs here!</div>
+            <div>explore all BASIS clubs here</div>
+            <a href="/index.html"><button>Back to home page</button></a>
         </div>
         <div class="main">
             <div class="filters">
-                <div class="club-types">
-                    <div class="club-type">Academic/Intellectual</div>
-                    <div class="club-type">Arts/Performance</div>
-                    <div class="club-type">CS/ICT/Technology</div>
-                    <div class="club-type">Sports/Wellness</div>
-                </div>
+                <form class="club-types-form">
+                    <div class="club-types">
+                        <label>
+                            <input type="checkbox" name="club-type" value="Academic/Intellectual" class="club-type-checkbox">
+                            <span class="club-type-label">Academic/Intellectual</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" name="club-type" value="Arts/Performance" class="club-type-checkbox">
+                            <span class="club-type-label">Arts/Performance</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" name="club-type" value="CS/ICT/Technology" class="club-type-checkbox">
+                            <span class="club-type-label">CS/ICT/Technology</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" name="club-type" value="Sports/Wellness" class="club-type-checkbox">
+                            <span class="club-type-label">Sports/Wellness</span>
+                        </label>
+                    </div>
+                </form>
+                <input type="text" placeholder="Search for clubs..." class="search-input" id="clubs-search-bar">
             </div>
             <div class="club-body"></div>
             <div class="footer"></div>

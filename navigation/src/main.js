@@ -1,4 +1,3 @@
-import "./style.css"
 import {renderClubs} from "../../src/renderClubs.js";
 import {gsap} from "gsap";
 import {ScrollTrigger} from "gsap/ScrollTrigger";

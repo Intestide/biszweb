@@ -1,4 +1,4 @@
-export async function listClubs(jsonPath="/clubs.json"){
+export async function listClubs(jsonPath="/src/assets/clubs.json"){
     try{
         let response=await fetch(jsonPath);
         if (!response.ok){

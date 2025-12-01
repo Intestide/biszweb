@@ -28,14 +28,27 @@ export async function renderClubs(pageName="", containerSelector=".club-body"){
         div.className="club-card js-club-card";
         let imagesContainer=document.createElement("div");
         imagesContainer.className="club-images";
-        if (club.images.length>0){
+        club.images.forEach((imgObj, imgIndex)=>{
             let img=new Image();
-            img.src=club.images[0].url;
-            img.loading="lazy";
-            img.alt=`${club.clubName} image`;
+            if (imgIndex==0){
+                img.loading="eager";
+            }
+            else{
+                img.loading="lazy";
+                img.style.animationDelay=`${imgIndex*0.1}s`;
+            }
+            img.src=imgObj.url;
+            img.alt=`${club.clubName} image ${imgIndex+1}`;
             img.className="club-image";
+            img.onload=()=>{
+                img.classList.add('loaded');
+            };
+            img.onerror=()=>{
+                console.warn(`Failed to load image: ${imgObj.url}`);
+                img.style.display='none';
+            };
             imagesContainer.appendChild(img);
-        }
+        });
         let clubCategory=categoryMap[club.clubID.split(".")[0]]||club.clubID.split(".")[0];
         div.innerHTML=`
             <h2 class="club-card-title">${club.clubName}</h2>

@@ -1,8 +1,14 @@
 import {listClubs} from "./listClubs.js";
+let categoryMap={
+    "academic": "Academic/Intellectual",
+    "arts": "Arts/Performance", 
+    "cs": "Computer Science/Information and Communication Technology/Technology",
+    "sports": "Sports/Wellness"
+};
 /**
 *Render club cards on the page for a given category.
 *@param {string} pageName - "academic", "arts", "cs", "sports" 
-*@param {string} containerSelector - selector for main container, default ".main-section"
+*@param {string} containerSelector - selector for main container, default ".club-body"
  */
 export async function renderClubs(pageName="", containerSelector=".club-body"){
     let clubData=await listClubs();
@@ -16,36 +22,21 @@ export async function renderClubs(pageName="", containerSelector=".club-body"){
         mainSection.innerHTML=`<p class="no-clubs-message">No ${pageName.toUpperCase()} clubs found.</p>`;
         return;
     }
+    let fragment=document.createDocumentFragment();
     filteredClubs.forEach((club, i)=>{
         let div=document.createElement("div");
         div.className="club-card js-club-card";
         let imagesContainer=document.createElement("div");
         imagesContainer.className="club-images";
-        club.images.forEach(imgObj=>{
+        if (club.images.length>0){
             let img=new Image();
-            img.src=imgObj.url;
+            img.src=club.images[0].url;
             img.loading="lazy";
             img.alt=`${club.clubName} image`;
             img.className="club-image";
             imagesContainer.appendChild(img);
-        });
-        let clubCategory=club.clubID.split(".")[0];
-        switch (clubCategory){
-            case "academic":
-                clubCategory="Academic/Intellectual";
-                break;
-            case "arts":
-                clubCategory="Arts/Performance";
-                break;
-            case "cs":
-                clubCategory="Computer Science/Information and Communication Technology/Technology"
-                break;
-            case "sports":
-                clubCategory="Sports/Wellness";
-                break;
-            default:
-                break;
         }
+        let clubCategory=categoryMap[club.clubID.split(".")[0]]||club.clubID.split(".")[0];
         div.innerHTML=`
             <h2 class="club-card-title">${club.clubName}</h2>
             <p><strong>Club Category:</strong> ${clubCategory}</p>
@@ -57,12 +48,15 @@ export async function renderClubs(pageName="", containerSelector=".club-body"){
             <p><strong>Description:</strong> ${club.description}</p>
         `;
         div.appendChild(imagesContainer);
-        mainSection.appendChild(div);
+        div.style.opacity="0";
+        div.style.transition="opacity 0.5s ease";
+        fragment.appendChild(div);
+    });
+    mainSection.appendChild(fragment);
+    let cards=mainSection.querySelectorAll('.js-club-card');
+    cards.forEach((card, i)=>{
         setTimeout(()=>{
-            div.style.opacity="0";
-            div.style.transition="opacity 0.5s ease";
-            mainSection.appendChild(div);
-            setTimeout(()=>div.style.opacity="1", 50);
+            card.style.opacity="1";
         }, 100*i);
     });
 }
